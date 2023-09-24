@@ -1,0 +1,16 @@
+.grid-container{
+    display: grid;
+
+    grid-template-rows: 1fr 1fr 2fr;
+    grid-template-columns: auto 400px minmax(200px, 500px);
+    background: #fff;
+    grid-auto-rows: 50px;
+}
+
+.grid-container div{
+    background-color: seagreen;
+    color: white;
+    font-size: 18px;
+    padding: 20px;
+    border: 2px solid white;
+}
