@@ -120,7 +120,3 @@ nav ul li + li + li {
   transform: translateX(0);
   transition-delay: 0.3s;
 }
-
-body:has(.show-nav) {
-  /* overflow: hidden; */
-}
