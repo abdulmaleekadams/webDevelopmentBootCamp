@@ -11,6 +11,7 @@ const countriesList = document.querySelector('#countriesList'),
   list = document.getElementById('list'),
   options = document.querySelectorAll('.options'),
   arrowIcon = document.getElementById('arrow'),
+  searchInput = document.getElementById('search'),
   mode = document.querySelector('#mode');
 
 const countryApiURL =
@@ -60,6 +61,23 @@ function enableEVenlistener() {
   document
     .querySelectorAll('.options')
     .forEach((option) => option.addEventListener('click', filterCountry));
+
+  searchInput.addEventListener('keyup', searchCountry);
+  searchInput.addEventListener('keydown', searchCountry);
+}
+
+function searchCountry(e) {
+  let searchInput = e.target.value.trim().toLowerCase();
+  if (searchInput !== '') {
+    countriesList.innerHTML = '';
+    const searchQuery = data.countryList.filter((country) => {
+      let countryName = country.name.common.toLowerCase();
+      return countryName.includes(searchInput);
+    });
+    window.scrollTo(0, 0);
+    createCountryList(countriesList, searchQuery);
+    checkCountry();
+  }
 }
 
 function renderCountriesList(countries) {
@@ -75,8 +93,8 @@ function renderCountriesList(countries) {
   createCountryList(countriesList, countries);
 }
 
+// Filter country list by region
 function filterCountry(e) {
-  list.classList.toggle('hide');
   arrowIcon.classList.toggle('rotate');
   selectedText.innerText = e.target.innerText;
 
@@ -90,6 +108,13 @@ function filterCountry(e) {
   checkCountry();
 }
 
+// Toggle Region List visibility
+selectedField.addEventListener('click', () => {
+  list.classList.toggle('hide');
+  arrowIcon.classList.toggle('rotate');
+});
+
+// Country UI Animation
 function checkCountry() {
   const countriesCard = document.querySelectorAll('.country');
   const triggerBottom = (window.innerHeight / 10) * 9;
@@ -109,19 +134,6 @@ function toggleMode() {
     document.body.classList.toggle('dark');
   }
 }
-
-options.forEach((option) => {
-  option.addEventListener('click', (e) => {
-    selectedText.innerHTML = e.target.textContent;
-    list.classList.toggle('hide');
-    arrowIcon.classList.toggle('rotate');
-  });
-});
-
-selectedField.addEventListener('click', () => {
-  list.classList.toggle('hide');
-  arrowIcon.classList.toggle('rotate');
-});
 
 mode.addEventListener('click', toggleMode);
 getCountries(countryApiURL);
