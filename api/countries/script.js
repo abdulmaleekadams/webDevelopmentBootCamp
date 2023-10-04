@@ -156,7 +156,7 @@ function checkCountry() {
 
 // toggle mode
 function toggleMode() {
-  if (window.matchMedia('(prefers-color-scheme: dark)')) {
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.body.classList.toggle('light');
   } else {
     document.body.classList.toggle('dark');
