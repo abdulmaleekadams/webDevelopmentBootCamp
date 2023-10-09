@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todolist</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <div class="date"><%= date[0] %>, <%= date[1] %> <%= date[2] %></div>
+    <div class="container">
+      <div class="todo-section">
+        <a href="/"> Today Task</a>
+        <a href="/work"> Work Task</a>
+      </div>
+
+      <div class="note-app">
+        <h1>Todo</h1>
+        <form action="<%= action %>" method="post">
+          <input
+            class="textarea"
+            name="todo"
+            placeholder="What are you to do.."
+          />
+          <button type="submit">Add</button>
+        </form>
+      </div>
+      <ul class="notes-list">
+        <% if (locals.todoList) { %> <% todoList.map((todo, idx) => {%>
+        <li id="<%= idx %>">
+          <input type="checkbox" id="todo-<%= idx %>" />
+          <label for="todo-<%= idx %>"><%= todo %></label>
+        </li>
+        <%})}%>
+      </ul>
+    </div>
+  </body>
+</html>
