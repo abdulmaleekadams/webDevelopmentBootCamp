@@ -27,6 +27,16 @@ app.get('/', (req, res) => {
   console.log(ratingText(5));
 });
 
+app.get('/fruits', async (req, res) => {
+  const fruitsCollection = await Fruit.find();
+  res.json({ fruits: fruitsCollection });
+});
+
+app.get('/people', async (req, res) => {
+  const personsCollection = await Person.find();
+  res.json({ people: personsCollection });
+});
+
 app.post('/fruits', async (req, res) => {
   let { name, rating, review } = req.query;
   try {
