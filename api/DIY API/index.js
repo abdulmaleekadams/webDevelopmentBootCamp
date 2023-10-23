@@ -139,24 +139,14 @@ app.delete('/jokes/:id', (req, res) => {
 app.delete('/all', (req, res) => {
   const queryMasterkey = req.query.masterkey;
   if (queryMasterkey === masterKey) {
-    jokes.splice(0)
-    
-    res.json({message: "Successfully Deleted all jokes"})
+    jokes.splice(0);
+
+    res.json({ message: 'Successfully Deleted all jokes' });
   } else {
     res
       .status(401)
       .json({ message: `You are not authorised to perform this action.` });
   }
-
-  // if (searchIndex === -1) {
-  //   res
-  //     .status(404)
-  //     .json({ message: `Message with ID ${jokeId} doesn't exist` });
-  // } else {
-  //   const jokeToRmv = jokes.splice(searchIndex, 1);
-
-  //   res.json({ message: 'Successfully Deleted', jokeDeleted: jokeToRmv });
-  // }
 });
 
 app.listen(port, () => {

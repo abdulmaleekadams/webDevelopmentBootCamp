@@ -52,7 +52,7 @@ app.post('/fruits', async (req, res) => {
       return res.json('Fruit exists');
     }
 
-    const fruit = Fruit.create({
+    const fruit = await Fruit.create({
       name,
       rating,
       review,
@@ -68,7 +68,7 @@ app.post('/fruits', async (req, res) => {
 });
 
 app.post('/person', async (req, res) => {
-  let { name, age } = req.query;
+  let { name, age, fruit } = req.query;
   try {
     if ((name.trim() === '') | (age.trim === '')) {
       return res.json("Name or age can't be empty");
@@ -78,13 +78,28 @@ app.post('/person', async (req, res) => {
       return res.json('Person exists');
     }
 
-    const person = Person.create({
+    let fruitExist = await Fruit.findOne(
+      { name: new RegExp(fruit, 'i') },
+    );
+    if (!fruitExist) {
+      fruitExist = await Fruit.create({
+        name: fruit,
+        rating: 5,
+        review: 'My best fruit',
+      });
+    }
+
+    console.log(fruitExist);
+
+    const person = await Person.create({
       name,
       age,
+      favouriteFruit: fruitExist,
     });
 
     res.json({ message: person });
   } catch (error) {
+    console.log(error);
     res.json({
       status: 'failed',
       error: error.message,

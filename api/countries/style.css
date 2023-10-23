@@ -106,7 +106,7 @@ header h1 {
 
 header button {
   font-weight: 600;
-  transition: all 0.4s ease-in;
+  transition: all 0.3s ease-in;
   cursor: pointer;
 }
 
@@ -232,7 +232,7 @@ main {
   width: 284px;
   opacity: 0;
   transform: translateY(100px);
-  transition: all 0.4s ease-in;
+  transition: all 0.3s ease-in;
   cursor: pointer;
   padding-bottom: 50px;
 }
