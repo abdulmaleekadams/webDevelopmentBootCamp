@@ -1,0 +1,170 @@
+:root {
+  --dark-bg: #15202b;
+  --white: #f0ebeb;
+  --text: #8899ac;
+  --btn-bg: #27a1f2;
+  --container-pd: 1.5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  color: var(--btn-bg);
+}
+
+body {
+  background-color: var(--dark-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container{
+  max-width: 1220px;
+}
+
+header {
+  padding: var(--container-pd);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  background-color: var(--dark-bg);
+}
+
+header .user {
+}
+
+.introText,
+.help {
+  color: var(--text);
+}
+
+.filter {
+  position: relative;
+}
+
+.filterForm {
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  transform: translateY(20px);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s;
+  background-color: var(--btn-bg);
+  z-index: 100;
+}
+
+.button,
+.filter input {
+  all: unset;
+  width: 100px;
+  padding: 0.75rem 0.4rem;
+  text-align: left;
+  color: var(--white);
+  background-color: var(--btn-bg);
+}
+
+.button {
+  box-shadow: 0 4px 4px rgba(20, 20, 20, 0.308);
+}
+
+main {
+  padding-inline: var(--container-pd);
+  padding-block: 2rem 5rem;
+  color: var(--text);
+}
+
+.bookList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5rem;
+}
+
+.bookContainer {
+  transform: translateY(30px);
+  visibility: hidden;
+  opacity: 0;
+  transition: transform 0.7s ease-in-out, opacity 0.7s ease-out;
+}
+
+.bookContainer img {
+  float: left;
+  width: 125px;
+  height: 187px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: var(--white);
+  transform: scale(0.7);
+  transition: transform 0.7s ease-in-out;
+}
+
+.book img {
+  float: none;
+  width: 200px;
+  height: auto;
+  grid-area: coverImg;
+}
+
+.book .info {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book .description {
+  grid-area: description;
+}
+
+.book {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas:
+    'coverImg info'
+    'description description';
+  column-gap: 2rem;
+}
+
+.bookContainer.show img {
+  transform: scale(1);
+}
+
+.bookTitle {
+  color: var(--white);
+}
+.info {
+  text-transform: uppercase;
+}
+
+.info > *,
+.description .text {
+  margin-bottom: 1rem;
+}
+
+.description .text {
+  text-align: justify;
+}
+
+.show {
+  transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+}

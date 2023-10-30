@@ -1,0 +1,44 @@
+<%- include('partials/header.ejs') -%>
+
+<header class="container">
+  <h1 class="user">Adams Abdulmaleek</h1>
+  <article class="bookContainer book" id="<%= book.id %>">
+    <img src="<%= book.cover_img %>" alt="" class="bookCover" />
+
+    <div class="info">
+      <h2 class="bookTitle"><%= book.title %> - BY <%= book.author %></h2>
+
+      <div class="userReview">
+        <p class="isbn">ISBN: 9781590308318</p>
+        <p class="dateRead">
+          DATE READ: <%= new Date(book.date_read).toISOString().split('T')[0] %>
+        </p>
+        <p class="recommendation">
+          HOW STRONGLY I RECOMMEND IT: <%= book.rating %>/10
+        </p>
+      </div>
+    </div>
+    <div class="description">
+      <span class="noteLink">
+        Go to the
+        <a
+          href="<%= book.book_source_url %>"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><%= book.book_source %> Page</a
+        >
+        for details and reviews
+      </span>
+      <p class="text"><%= book.description %></p>
+    </div>
+  </article>
+</header>
+
+<main class="container">
+    <h2>MY NOTES</h2>
+  <p>
+    <% book.note.split('\n').forEach(paragraph => {%> <%= paragraph %> <br />
+    <%}) %>
+  </p>
+</main>
+<%- include('partials/footer.ejs') -%>
