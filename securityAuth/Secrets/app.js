@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const md5 = require('md5');
 
 const User = require('./model');
 
@@ -44,7 +45,7 @@ app.get('/secrets', (req, res) => {
 app.post('/register', async (req, res) => {
   try {
     const { username, password } = req.body;
-    const newUser = new User({ email: username, password: password });
+    const newUser = new User({ email: username, password: md5(password) });
     await newUser.save();
     res.render('secrets');
   } catch (err) {
@@ -58,7 +59,7 @@ app.post('/login', async (req, res) => {
 
     const user = await User.findOne({ email: username });
 
-    if (user && password === user.password) {
+    if (user && md5(password) === user.password) {
       return res.redirect('/secrets');
     } else if (user && password !== user.password) {
       console.log('Wrong password');
