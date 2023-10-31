@@ -79,6 +79,7 @@ header .user {
   text-align: left;
   color: var(--white);
   background-color: var(--btn-bg);
+  text-transform: capitalize;
 }
 
 .button {

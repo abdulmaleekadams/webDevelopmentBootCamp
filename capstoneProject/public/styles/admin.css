@@ -1,0 +1,127 @@
+/* input{
+    display: block;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+section {
+  width: 100%;
+  max-width: 1220px;
+  margin-inline: auto;
+  padding: 3rem 2rem;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  position: fixed;
+  background: var(--dark-bg);
+  left: 0;
+  top: 0;
+  z-index: 99;
+  overflow-y: scroll;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: 0.4s ease;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin-block: 1rem;
+  outline: none;
+  border: 2px solid transparent;
+  transition: border 0.4s ease-in-out;
+}
+
+label,
+h2 {
+  color: #fff;
+}
+
+button i {
+  font-size: 1.57rem;
+}
+
+.textareaContainer {
+  position: relative;
+}
+
+textarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  outline: none;
+  border: none;
+  min-height: 100px;
+  height: auto;
+  width: 100%;
+  padding: 25px 15px;
+  line-clamp: 2;
+  font-family: sans-serif;
+  resize: none;
+  transition: height 0.4s ease;
+  line-height: 1.5;
+  visibility: hidden;
+  /* transform: translateY(-30px); */
+}
+
+.truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textarea {
+  height: 100px;
+  background: var(--white);
+  overflow: hidden;
+  padding: 25px 15px;
+  margin-block: 1rem;
+  outline: none;
+  border: 2px solid transparent;
+  transition: height 0.4s ease, border 0.4s ease-in-out;
+}
+
+.textarea:focus,
+input:focus {
+  border: 2px solid #27a1f2;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.bookForm > .details {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 2rem;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.editForm button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showUI {
+  visibility: visible;
+  transform: translateY(0);
+}

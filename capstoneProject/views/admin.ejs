@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Read Record</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/admin.css" />
+
+    <script src="/script/main.js" defer></script>
+  </head>
+  <body>
+    <section class="container">
+        <% for(let book of books) {%> 
+            
+        <div class="bookForm">
+            <div class="details">
+            <h2><%= book.title %>  - BY <%= book.author %></h2>
+                <div class="action">
+                    <button type="button" class="edit" id="updateBtn-<%= book.id %>">
+                        <i class="ri-pencil-line"></i>
+                    </button>
+                    <form action="/delete/<%= book.id %>" method="post" class="delete">
+                        <button type="submit" value="<%= book.id %>" id="delete-<%= book.id %>">
+                            <i class="ri-delete-bin-5-line"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="editForm" id="editForm-<%= book.id %>">
+                    
+                    
+            
+            <form action="/update/<%= book.id %>" method="post" id="form-<%= book.id %>">
+                <div class="action">
+
+                <button type="submit" class="button done" value="<%= book.id %>"" id="update-<%= book.id %>">
+                             <i class="ri-check-line"></i>Done
+                </button>
+                <button type="button" class="button close" id="closeBtn-<%= book.id %>">
+                            <i class="ri-close-line"></i>Cancel
+                    </button>
+                </div>
+
+                <label for="title">Title</label>
+                <input type="text" name="title" value="<%= book.title %>" placeholder="Book title">
+                <label for="isbn">Isbn</label>
+                <input type="text" name="isbn" value="<%= book.isbn %>" placeholder="ISBN">
+                <label for="author">Author</label>
+                <input type="text" name="author" value="<%= book.author %>" placeholder="Author of the book">
+                <label for="date_read">Date Read</label>
+                <input type="text" name="date_read" value="<%= new Date(book.date_read).toISOString().split('T')[0] %>" placeholder="<%=new Date(book.date_read).toISOString().split('T')[0]%>">
+                <label for="rating">Rating</label>
+                <input type="text" name="rating" value="<%= book.rating %>" placeholder="Rating">
+                <label for="description">Description</label>
+                <div class="textareaContainer" >
+                    <div role="textbox"  contenteditable class="textarea truncate"><%= book.description %></div>
+                    <textarea  wrap="soft" name="description" readonly></textarea>
+                </div>
+                <label for="book_source">Book source</label>
+                <input type="text" name="book_source" value="<%= book.book_source%>" placeholder="Name of the website">
+                <label for="book_source_url">Book Source URL</label>
+                <input type="text" name="book_source_url" value="<%= book.book_source_url %>" placeholder="The book link">
+            
+            </form>
+            </div>
+    </div>
+    <%} %>
+    </section>
+     
+      <!-- <form class="item" action="/add" method="post">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus="true" />
+          <button class="add" type="submit" name="list" value=>+</button>
+        </form> -->
+    </div>
+  </body>
+</html>
