@@ -1,36 +1,54 @@
-import express from 'express';
-import bodyParser from 'body-parser';
+const express = require('express');
+const bodyParser = require('body-parser');
+const Todo = require('./model');
+require('./config/dbConnect');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const date = new Date().toDateString().split(' ');
+// const date = new Date().toDateString().split(' ');
 
 app.set('view engine', 'ejs');
-
-app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let todoListData = {
-  todoList: [],
-  action: '/',
-  date: date,
-};
-let workTodoListData = {
-  todoList: [],
-  action: '/work',
-  date: date,
-};
+app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+// const todoListItems = async () => {
+//   await Todo.insertMany([
+//     {
+//       todoTask: 'Learn nodejs',
+//     },
+//     {
+//       todoTask: 'Build a random JS project',
+//     },
+//     {
+//       todoTask: 'Contribute to open source projects',
+//     },
+//   ]);
+// };
+
+// todoListItems();
+
+// Todo.collection.drop()
+
+app.get('/', async (req, res) => {
+  const todoList = await Todo.find();
+
+  let todoListData = {
+    todoList: todoList,
+    action: '/',
+    date: 'Today',
+  };
   res.render('index.ejs', todoListData);
 });
 
-app.post('/', (req, res) => {
-  if (req.body.todo.trim() !== '') {
-    todoListData.todoList.push(req.body.todo);
+app.post('/', async (req, res) => {
+  try {
+    await Todo.create({
+      todoTask: req.body.todo,
+    });
     res.redirect('/');
-  } else {
-    res.redirect('/');
+  } catch (error) {
+    return res.json({ message: error.message });
   }
 });
 

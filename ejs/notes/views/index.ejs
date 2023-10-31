@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles/main.css" />
   </head>
   <body>
-    <div class="date"><%= date[0] %>, <%= date[1] %> <%= date[2] %></div>
+    <div class="date"><%= date %></div>
     <div class="container">
       <div class="todo-section">
         <a href="/"> Today Task</a>
@@ -26,10 +26,11 @@
         </form>
       </div>
       <ul class="notes-list">
+        <% console.log(todoList) %> 
         <% if (locals.todoList) { %> <% todoList.map((todo, idx) => {%>
         <li id="<%= idx %>">
-          <input type="checkbox" id="todo-<%= idx %>" />
-          <label for="todo-<%= idx %>"><%= todo %></label>
+          <input type="checkbox" id="todo._id" />
+          <label for="todo-<%= idx %>"><%= todo.todoTask %></label>
         </li>
         <%})}%>
       </ul>
