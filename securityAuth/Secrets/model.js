@@ -1,5 +1,5 @@
-const mongoose= require("mongoose");
-
+const mongoose = require('mongoose');
+const encrypt = require('mongoose-encryption');
 
 // Create a user schema
 const userSchema = new mongoose.Schema({
@@ -7,7 +7,11 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
+const secret = 'ThisIsMyLittleSecret';
+
+// var secret = process.env.SOME_LONG_UNGUESSABLE_STRING;
+userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password'] });
+
 const User = mongoose.model('User', userSchema);
 
-
-module.exports = User
+module.exports = User;
