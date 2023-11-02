@@ -1,18 +1,18 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
+const findOrCreate = require('mongoose-findorcreate');
+
 
 // Create a user schema
 const userSchema = new mongoose.Schema({
   email: String,
   password: String,
+  googleId: String,
+  facebookId: String
 });
 
-
-// var secret = process.env.SOME_LONG_UNGUESSABLE_STRING;
-// userSchema.plugin(encrypt, {
-//   secret: process.env.SECRET,
-//   encryptedFields: ['password'],
-// });
+userSchema.plugin(passportLocalMongoose)
+userSchema.plugin(findOrCreate)
 
 const User = mongoose.model('User', userSchema);
 
