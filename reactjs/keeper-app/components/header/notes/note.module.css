@@ -1,0 +1,36 @@
+.noteCard{
+    background-color: rgb(255, 255, 255);
+    color: #000;
+    padding: 1.25rem;
+    border-radius: 10px;
+    box-shadow: 4px 5px 5x rgba(255, 252, 252, 0.342);
+    min-width: 300px;
+    width: 300px;
+}
+
+.noteTitle{
+    font-size: 1.2rem;
+    color: orange;
+}
+
+.noteContent{
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    line-height: 1.5;
+}
+
+.card{
+    transition: all 0.5s ease-in-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+    color: #fff;
+  }
+
+  .card:hover span {
+    transform: translateX(4px);
+  }
+}

@@ -1,0 +1,10 @@
+.headerContainer{
+    background-color: orange;
+    padding: 1rem;
+    border-bottom: 3px solid rgba(155, 155, 155, 0.733);
+    filter: blur(30%)
+}
+
+.headerContainer h1{
+    font-size: 1.5rem;
+}

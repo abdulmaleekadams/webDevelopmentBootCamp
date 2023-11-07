@@ -1,0 +1,16 @@
+{
+  "notes": [
+    {
+      "title": "Grocery List",
+      "content": "1. Apples\n2. Milk\n3. Bread\n4. Eggs\n5. Chicken\n6. Spinach\nRemember to check for any discounts or coupons before heading to the store."
+    },
+    {
+      "title": "Workout Plan",
+      "content": "Monday: Cardio - 30 minutes\nTuesday: Strength training - 45 minutes\nWednesday: Yoga - 1 hour\nThursday: Rest day\nFriday: Cardio - 30 minutes\nSaturday: Hiking - 2 hours\nSunday: Rest day\nStay hydrated and listen to your body."
+    },
+    {
+      "title": "Travel Itinerary",
+      "content": "Destination: Paris, France\nDeparture: November 15, 2023\nReturn: November 22, 2023\n\nDay 1: Eiffel Tower and Louvre Museum\nDay 2: Notre-Dame Cathedral and Seine River Cruise\nDay 3: Montmartre and Sacré-Cœur Basilica\nDay 4: Versailles Palace\nMake sure to book tickets in advance for popular attractions."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+.timer{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: antiquewhite;
+    row-gap: 1.7rem;
+}
+
+.timer button{
+    all: unset;
+    padding: 1.5rem;
+    background-color: brown;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+
+.timer button:hover{
+    transform: scale(0.95);
+}
+
+.timer p{
+    font-size: 2rem;
+    color: brown;
+}
