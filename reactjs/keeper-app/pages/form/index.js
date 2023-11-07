@@ -11,17 +11,10 @@ export default function Form() {
     const { name, value } = e.target;
 
     setFullname((prevValue) => {
-      if (name === 'firstname') {
-        return {
-          firstname: value,
-          lastname: prevValue.lastname,
-        };
-      } else if (name === 'lastname') {
-        return {
-          firstname: prevValue.firstname,
-          lastname: value,
-        };
-      }
+      return {
+        ...prevValue,
+        [name]: value,
+      };
     });
   }
 
